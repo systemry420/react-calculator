@@ -27,22 +27,34 @@ body {
     font-size: 2em;
 }
 
+.ac {
+    margin-right: 50px;
+}
+
+.nums-container {
+    width: 75%;
+}
+
+.ops-container {
+    width: 25%;
+}
+
 button {
     height: 70px;
     width: 70px;
     border-radius: 50%;
     margin: 5px;
     border: none;
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 button.big-h {
-    width: 110px;
+    width: 150px;
     border-radius: 50px;
 }
 
 button.big-v {
-    height: 110px;
+    height: 130px;
     border-radius: 50px;
 }
 
