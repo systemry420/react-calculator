@@ -10,13 +10,14 @@ body {
 }
 
 .app {
-    width: 320px;
-    height: 500px;
+    width: 340px;
+    height: 550px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     background-color: #111;
+    border-radius: 20px;
 }
 
 .display {
@@ -24,7 +25,7 @@ body {
     padding: 10px;
     text-align: right;
     color: #fff;
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
 .ac {
@@ -45,7 +46,7 @@ button {
     border-radius: 50%;
     margin: 5px;
     border: none;
-    font-size: 1.5em;
+    font-size: 1.8em;
     cursor: pointer;
 }
 
