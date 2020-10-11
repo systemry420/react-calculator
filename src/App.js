@@ -8,12 +8,12 @@ class App extends React.Component {
   state = {
     lastPressed: undefined,
     currentNumber: '0',
-    prevNumber: undefined,
+    calc: undefined,
     operation: undefined
   }
 
   handleClick = (e) => {
-    const { lastPressed, currentNumber, prevNumber, operation } = this.state;
+    const { lastPressed, currentNumber, calc, operation } = this.state;
     const { innerText } = e.target;
 
     if(!Number.isNaN(Number(innerText))){
@@ -35,7 +35,7 @@ class App extends React.Component {
       case "AC":{
         this.setState({
           currentNumber: '0',
-          prevNumber: undefined,
+          calc: undefined,
           operation: undefined
         })
       }
@@ -53,18 +53,23 @@ class App extends React.Component {
         if(!operation){
           this.setState({
             operation: innerText,
-            prevNumber: currentNumber,
+            calc: currentNumber,
             currentNumber: '0'
           })
         }
-        else {
-          const evalued = eval(`${prevNumber} ${operation} ${currentNumber}`)
-          console.log(evalued);
+        else if(innerText === '='){
+          const evalued = eval(`${calc} ${operation} ${currentNumber}`)
+          // console.log(evalued);
 
           this.setState({
-            operation: innerText,
-            prevNumber: evalued,
-            currentNumber: innerText === "="? evalued : "0"
+            operation: undefined,
+            calc: evalued,
+            currentNumber: evalued
+          })
+        }
+        else {
+          this.setState({
+            operation: innerText
           })
         }
       }
@@ -75,13 +80,17 @@ class App extends React.Component {
   }
   
   render(){
-    const { currentNumber} = this.state;
+    const { currentNumber, calc, operation } = this.state;
     return (
       <div className="app">
         <p style={{position: "absolute", top: 0}}>
           {JSON.stringify(this.state, null, 2)}
         </p>
-        <div id="display" className="display">{currentNumber}</div>
+        <div id="display" className="display">
+          {currentNumber}
+          <small >{calc} {operation}</small>
+        </div>
+        
         {/* Generate buttons */}
 
         <div className="nums-container">
